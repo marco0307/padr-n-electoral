@@ -1,0 +1,32 @@
+#color_file{
+color:#aaaaaa;
+}
+.blanco{
+color:#fff;
+}
+.centrar{
+margin-left:40%;
+}
+#foto{
+border-radius:5px;
+}
+.fotoPerfil{
+max-width: 317px;
+height: 210px;
+}
+.thead-inverse{
+color: #fff;
+background-color: #ffffff;
+}
+.white{
+color:#000;
+}
+.margin{
+margin:0;
+}
+#ultimo{
+color: black;
+}
+#ultimo:hover{
+color: red;
+}
