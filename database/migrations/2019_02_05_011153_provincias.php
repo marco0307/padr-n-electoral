@@ -14,7 +14,7 @@ class Provincias extends Migration
     public function up()
     {
         Schema::create('provincias', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('nombre')->required();
         });
     }

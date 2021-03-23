@@ -18,7 +18,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" name="nombre" maxlength="150" class="form-control" value="{{$user->nombre}}" placeholder="Nombre">
+                                    <input type="text" name="nombre" maxlength="150" class="form-control" value="{{$user->nombre}}" placeholder="Nombre" disabled>
                                 </div>
                                 @if ($errors->has('nombre'))
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -30,7 +30,7 @@
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" maxlength="190" name="apellido" value="{{$user->apellido}}" class="form-control" placeholder="Apellido">
+                                    <input type="text" maxlength="190" name="apellido" value="{{$user->apellido}}" class="form-control" placeholder="Apellido" disabled>
                                 </div>
                                 @if ($errors->has('apellido'))
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -43,7 +43,7 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <div class="form-group drop-custum">
-                                <select name="role_id" class="form-control show-tick">
+                                <select name="role_id" class="form-control show-tick" disabled>
                                     <option value="">-- Tipo de usuario --</option>
                                     <option @if($user->role_id == 2) selected @endif value="2">Empatronador</option>
                                     <option @if($user->role_id == 1) selected @endif value="1">Administrador</option>
@@ -58,12 +58,12 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" value="{{$user->email}}" disabled="disabled" class="form-control">
+                                    <input type="text" value="{{$user->email}}" disabled="disabled" class="form-control" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12"><br>
-                           <label id="color_file">Foto de perfil</label> <input accept="image/png,image/jpeg,image/jpg" name="foto" type="file"><br>
+                           <label id="color_file">Foto de perfil</label> <input accept="image/png,image/jpeg,image/jpg" name="foto" type="file" disabled><br>
                            @if ($errors->has('foto'))
                            <span class="invalid-feedback text-danger" role="alert">
                                <strong>{{ $errors->first('foto') }}</strong>
@@ -72,7 +72,7 @@
                            <hr>
                         </div>
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-raised g-bg-cyan">Actualizar</button>
+                            <button type="submit" class="btn btn-raised g-bg-cyan" disabled>Actualizar</button>
                         </div>
                     </div>
                 </form>

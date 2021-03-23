@@ -81,8 +81,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{route('ver_user',$user->slug)}}" class="btn  btn-info bg-blue-grey waves-effect">Ver</a>
-                                            <a href="{{route('editar_user',$user->slug)}}" class="btn  btn-warning bg-blue-grey waves-effect">Editar</a>
-                                            <button onclick="return confirm('¿Desea eliminar este usuario?')" type="submit" class="btn btn-danger bg-blue-grey waves-effect">Eliminar</button>
+                                            <a href="{{route('editar_user',$user->slug)}}" class="btn  btn-warning bg-blue-grey waves-effect" disabled>Editar</a>
+                                            {{-- <button onclick="return confirm('¿Desea eliminar este usuario?')" type="submit" class="btn btn-danger bg-blue-grey waves-effect">Eliminar</button> --}}
                                         </form>
                                     </td>
                                 </tr>

@@ -16,14 +16,14 @@ class Grupos extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->required();
-            $table->integer('municipio_id');
-            $table->integer('militante_id');
+            $table->integer('municipio_id')->unsigned();
+            //$table->integer('militante_id');
             $table->string('descripcion',1300);
             $table->string('slug');
             $table->timestamps();
 
             $table->foreign('municipio_id')->references('id')->on('municipios')->onDelete('cascade');
-            $table->foreign('militante_id')->references('id')->on('militantes')->onDelete('cascade');
+            //$table->foreign('militante_id')->references('id')->on('militantes')->onDelete('cascade');
         });
     }
 

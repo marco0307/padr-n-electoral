@@ -7,7 +7,7 @@
 <div class="row clearfix">
     <div class="col-lg-3 col-md-12 col-sm-12">
         <div class=" card patient-profile">
-            <img src="{{asset('images/perfil/'.$militante->foto)}}" width="100%" class="img-fluid" alt="">                              
+            <img src="{{asset('images/perfil/'.$militante->foto)}}" width="100%" alt="Perfil img">                              
         </div>
         <div class="card xl-turquoise">
             <div class="header xl-turquoise">

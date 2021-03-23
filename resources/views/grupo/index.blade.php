@@ -7,6 +7,7 @@
 <div><a href="{{route('crear_grupo')}}" class="btn  btn-success bg-blue-grey waves-effect"><div class="blanco">Crear grupo</div></a></div>
 <div>
     @if(session('status'))
+        <br>
         <div class="alert alert-success">
             {{session('status')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -62,9 +63,8 @@
                                 @foreach ($grupos as $grupo)
                                 <tr>
                                     <td><span class="list-name">{{$grupo->nombre}}</span></td>
-                                    <td>{{$grupo->nombreMilitante}} {{$grupo->apellido}}</td>
                                     <td>{{$grupo->nombreMunicipio}}</td>
-                                    <td>{{substr($grupo->descripcion,0,25)}}...</td>
+                                    <td>{{substr($grupo->descripcion,0,25)}}</td>
                                     <td class="fechaFormato">{{$grupo->created_at}}</td>
                                     <td class="text-center">                               
                                         <form action="/grupo/{{$grupo->id}}" method="POST" style="margin: 0px;">

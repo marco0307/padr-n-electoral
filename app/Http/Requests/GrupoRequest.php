@@ -26,7 +26,6 @@ class GrupoRequest extends FormRequest
         return [
             'nombre'=>'required|string|max:190',
             'municipio'=>'required',
-            'militante'=>'required',
             'descripcion'=>'required|max:600',
         ];
     }

@@ -33,18 +33,18 @@ class CreateMilitantesTable extends Migration
             $table->string('linkedin')->nullable();
             $table->string('slug');
             //Foreign keys
-            $table->integer('user_id');
-            $table->integer('militante_id')->nullable();
-            $table->integer('ocupacion_id');
-            $table->integer('grupo_id')->nullable();
-            $table->integer('cargo_id');
-            $table->integer('sector_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('militante_id')->unsigned()->nullable();
+            $table->integer('ocupacion_id')->unsigned();
+            $table->integer('grupo_id')->unsigned()->nullable();
+            $table->integer('cargo_id')->unsigned();
+            $table->integer('sector_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('militante_id')->references('id')->on('militantes')->onDelete('cascade');
             $table->foreign('ocupacion_id')->references('id')->on('ocupacions');
-            $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
             $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->foreign('sector_id')->references('id')->on('sectors');
         });

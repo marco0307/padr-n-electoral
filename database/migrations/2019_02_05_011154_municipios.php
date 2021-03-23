@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Sectors extends Migration
+class Municipios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class Sectors extends Migration
      */
     public function up()
     {
-        Schema::create('sectors', function (Blueprint $table) {
-            $table->integer('id');
+        Schema::create('municipios', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('nombre')->required();
-            $table->integer('municipio_id');
-            $table->foreign('municipio_id')->references('id')->on('municipios')->onDelete('cascade');
+            $table->integer('provincia_id')->unsigned();
+            $table->foreign('provincia_id')->references('id')->on('provincias')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class Sectors extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectors');
+        Schema::dropIfExists('municipios');
     }
 }

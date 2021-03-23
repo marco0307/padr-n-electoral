@@ -48,24 +48,6 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <select name="militante" class="form-control show-tick js-select2" data-live-search="true">
-                                        <option value="">-- Lider del grupo --</option>
-                                        @foreach ($militantes as $militante)
-                                            <option @if(old('militante') == $militante->id) selected @endif value="{{$militante->id}}">{{$militante->nombre}} {{$militante->apellido}}</option>
-                                        @endforeach
-                                        
-                                    </select>
-                                </div>
-                                @if ($errors->has('militante'))
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $errors->first('militante') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="form-line">
                                     <textarea maxlength="1290" name="descripcion" class="form-control" placeholder="Descripcion del grupo">{{ old('descripcion') }}</textarea>
                                 </div>
                                 @if ($errors->has('descripcion'))

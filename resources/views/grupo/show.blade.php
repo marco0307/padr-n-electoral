@@ -33,9 +33,7 @@
             <div class="body">
                 <strong>Nombre del grupo</strong>
                 <p>{{$grupo->nombre}}</p>
-                <strong>Lider del grupo</strong>
-                <p><a href="{{route('ver_militante',$grupo->slugMilitante)}}">{{$grupo->nombreMilitante}} {{$grupo->apellido}}</a></p>
-                <strong>Municipi</strong>
+                <strong>Municipio</strong>
                 <p>{{$grupo->nombreMunicipio}}</p>
                 <strong>Fecha de creacion</strong>
                 <p class="fechaFormato">{{$grupo->created_at}}</p>

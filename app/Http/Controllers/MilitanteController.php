@@ -179,7 +179,7 @@ class MilitanteController extends Controller
         $militante->slug = $request->input('nombre').time();
         $militante->save();
 
-        return redirect()->action('MilitanteController@index')->with('status_create','El militante con el email '. $request->input('email') .' fue creado exitosamente!!');
+        return redirect()->action('MilitanteController@show', $militante->slug)->with('status_create','El militante con el email '. $request->input('email') .' fue creado exitosamente!!');
     }
 
     /**

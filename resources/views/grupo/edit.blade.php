@@ -49,23 +49,6 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <select name="militante" class="form-control show-tick">
-                                        <option value="">-- Lider del grupo --</option>
-                                        @foreach ($militantes as $militante)
-                                            <option @if($grupo->militante_id == $militante->id) selected @endif value="{{$militante->id}}">{{$militante->nombre}} {{$militante->apellido}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @if ($errors->has('militante'))
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $errors->first('militante') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="form-line">
                                     <textarea maxlength="1195" name="descripcion" class="form-control" placeholder="Descripcion del grupo">{{$grupo->descripcion}}</textarea>
                                 </div>
                                 @if ($errors->has('descripcion'))

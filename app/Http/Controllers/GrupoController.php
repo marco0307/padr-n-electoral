@@ -23,10 +23,10 @@ class GrupoController extends Controller
         $nombre = $request->get('nombre');
         $municipio = $request->get('municipio');
 
-        $grupos = Grupo::join('militantes','grupos.militante_id','militantes.id')
-        ->join('municipios','grupos.municipio_id','municipios.id')
+        $grupos = Grupo::/* join('militantes','grupos.militante_id','militantes.id') */
+        /* -> */join('municipios','grupos.municipio_id','municipios.id')
         ->buscar($nombre,$municipio)
-        ->select('grupos.*','militantes.nombre AS nombreMilitante','militantes.apellido',
+        ->select('grupos.*',/* 'militantes.nombre AS nombreMilitante','militantes.apellido', */
         'municipios.nombre AS nombreMunicipio')
         ->orderBy('grupos.id','DESC')->paginate(10);
 
@@ -42,9 +42,9 @@ class GrupoController extends Controller
      */
     public function create()
     {
-        $militantes = Militante::All();
+        //$militantes = Militante::All();
         $municipios = \DB::select('select * from municipios');
-        return view('grupo.create',compact('militantes','municipios'));
+        return view('grupo.create',compact(/* 'militantes', */'municipios'));
     }
 
     /**
@@ -59,12 +59,12 @@ class GrupoController extends Controller
 
         $grupo->nombre = $request->input('nombre');
         $grupo->municipio_id = $request->input('municipio');
-        $grupo->militante_id = $request->input('militante');
+        //$grupo->militante_id = $request->input('militante');
         $grupo->descripcion = $request->input('descripcion');
         $grupo->slug = $request->input('nombre').time();
         $grupo->save();
 
-        return redirect()->action('GrupoController@index')->with('status','El grupo de trabajo fue creado exitosamente!!');
+        return redirect()->action('GrupoController@show', $grupo->slug)->with('status','El grupo de trabajo fue creado exitosamente!!');
     }
 
     /**
@@ -75,9 +75,9 @@ class GrupoController extends Controller
      */
     public function show($slug)
     {
-        $grupo = Grupo::join('militantes','grupos.militante_id','militantes.id')
-        ->join('municipios','grupos.municipio_id','municipios.id')->select('grupos.*',
-        'militantes.nombre AS nombreMilitante','militantes.apellido','militantes.slug AS slugMilitante','municipios.nombre AS nombreMunicipio')
+        $grupo = Grupo::/* join('militantes','grupos.militante_id','militantes.id') */
+        /* -> */join('municipios','grupos.municipio_id','municipios.id')->select('grupos.*',
+        /* 'militantes.nombre AS nombreMilitante','militantes.apellido','militantes.slug AS slugMilitante', */'municipios.nombre AS nombreMunicipio')
         ->where('grupos.slug',$slug)->firstOrFail();
 
         $militantes = Militante::join('cargos','cargos.id','militantes.cargo_id')
@@ -96,10 +96,10 @@ class GrupoController extends Controller
     public function edit($slug)
     {
         $grupo = Grupo::where('slug',$slug)->firstOrFail();
-        $militantes = Militante::All();
+        //$militantes = Militante::All();
         $municipios = \DB::select('select * from municipios');
 
-        return view('grupo.edit',compact('grupo','militantes','municipios'));
+        return view('grupo.edit',compact('grupo',/* 'militantes', */'municipios'));
     }
 
     /**
@@ -115,7 +115,7 @@ class GrupoController extends Controller
 
         $grupo->nombre = $request->input('nombre');
         $grupo->municipio_id = $request->input('municipio');
-        $grupo->militante_id = $request->input('militante');
+        //$grupo->militante_id = $request->input('militante');
         $grupo->descripcion = $request->input('descripcion');
         $grupo->save();
 
@@ -137,8 +137,8 @@ class GrupoController extends Controller
             return redirect()->action('GrupoController@show',$grupo->slug)->with('status_info','El grupo de trabajo no puede ser eliminado porque posee militantes.');
         }
         else {
-        $grupo->delete();
-        return redirect()->action('GrupoController@index')->with('status','El grupo de trabajo fue eliminado con exito!!');
+            $grupo->delete();
+            return redirect()->action('GrupoController@index')->with('status','El grupo de trabajo fue eliminado con exito!!');
         }
         
     }
